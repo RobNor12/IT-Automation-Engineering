@@ -26,7 +26,7 @@ I am an inspiring IT professional interested in the fields of programming, data 
 | :--- | :--- |:--- | :--- |
 | Associates of Applied Sciences: Cybersecurity Technologies | Associates degree | Pearl River Community Collage(Popularville, Mississippi) | Graduated May, 2025 |
 | CompTIA Security+ | Certification | CompTIA | Completed(Valid through April 2025-2028) |
-| Google Data Analytics Professional Certificate | Certificate | Coursera | Expected February 2026 |
+| Google Data Analytics Professional Certificate | Certificate | Coursera | February 2026 |
 
 <hr>
 
