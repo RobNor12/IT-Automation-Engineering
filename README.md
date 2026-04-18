@@ -6,7 +6,7 @@ This project identifies high-probability fraud signatures within the IEEE-CIS da
 
 ## 🛠️ Technical Stack
 * **Data Engineering:** Google BigQuery (SQL) using CTEs and complex Joins.
-* **Analysis:** Python (for exploratory data analysis) & AI Prompting (logic verification).
+* **Analysis:** AI Prompting (logic verification).
 * **Visualization:** Tableau Public (Heatmaps & Risk Scoring).
 
 ## 🔍 Key Discovery: The "Triple Threat"
