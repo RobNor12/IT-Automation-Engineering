@@ -26,6 +26,6 @@ I architected a centralized analytical layer in BigQuery to process 506,691 rows
 * **Cardholder Verification:** Enhanced manual review for Credit transactions paired with anonymous domains.
 
 ## 🔗 Project Links
-* [Interactive Tableau Dashboard](PASTE_YOUR_LINK_HERE)
+* [Interactive Tableau Dashboard: Tripple threat](https://public.tableau.com/app/profile/robert.norris3840/viz/Fraudanalysis_triplethreat/Sheet1)
 * [Project Slideshow (PDF)](./Slideshow/Fraud_Analysis_Slideshow.pdf)
 * [Data Source](https://www.kaggle.com/competitions/ieee-fraud-detection)
