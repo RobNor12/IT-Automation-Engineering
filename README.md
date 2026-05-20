@@ -1,6 +1,6 @@
 🎓 Professional Portfolio Hub: Robert Norris III
 
-Hello, I'm Robert Norris III, and welcome to my Github page, this page is an overview for my repoistory and its branches
+Hello, I'm Robert Norris III, and welcome to my GitHub page. This page is an overview of my repository and its branches
 
 <hr>
 
@@ -8,11 +8,11 @@ Hello, I'm Robert Norris III, and welcome to my Github page, this page is an ove
 
 <br>
 
-Linkedin: www.linkedin.com/in/robert-n-331315345
+LinkedIn: www.linkedin.com/in/robert-n-331315345
 
 Email: rnorris12021@gmail.com
 
-note: the best way to get in contact with me is through email
+Note: the best way to get in contact with me is through email
 
 <hr>
 
@@ -32,16 +32,16 @@ I am an inspiring IT professional interested in the fields of programming, data 
 
 📚 Repository Branches
 
-A list of the branches that my repisitory contains
+A list of the branches that my repository contains
 
 <br>
 
 | Name of Branch | Branch focus subject |
 | :--- | :--- |
 | Harvard-CS50 | Harvard CS50: Introduction to Computer Science |
-| S&P 500 vs Case-Shiller project| Personal Project |
-| IEEE Fraud Analysis| Personal Project|
-| Stock Market Quantitative Analysis R | Personal Project |
+| S&P 500 vs Case-Shiller project| Data-Driving analysis of economy vs housing market |
+| IEEE Fraud Analysis| Operational Risk & Fraud Detection Workflow. |
+| Stock Market Quantitative Analysis R | Data-Driven Forecasting & Reporting. |
 
 
-To access my branches click on the main branch drop down menu
+To access my branches, click on the main branch drop-down menu
