@@ -9,7 +9,7 @@ This project identifies high-probability fraud signatures within the IEEE-CIS da
 * **Analysis:** AI Prompting (logic verification).
 * **Visualization:** Tableau Public (Heatmaps & Risk Scoring).
 
-## 🔍 Key Discovery: The "Triple Threat"
+## 🔍 Key Discovery: The "Triple Threat."
 Through SQL-driven forensic analysis, I uncovered a critical risk nexus with a **95%+ fraud correlation**:
 1. **Anonymity:** Encrypted email domains (Protonmail).
 2. **Device Spoofing:** Desktop environments presenting Mobile hardware signatures.
