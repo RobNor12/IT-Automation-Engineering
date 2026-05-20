@@ -36,12 +36,12 @@ A list of the branches that my repository contains
 
 <br>
 
-| Name of Branch | Branch focus subject |
+| Name of Branch | Branch focus subject | link |
 | :--- | :--- |
-| Harvard-CS50 | Harvard CS50: Introduction to Computer Science |
-| S&P 500 vs Case-Shiller project| Data-Driven analysis of economy vs housing market |
-| IEEE Fraud Analysis| Operational Risk & Fraud Detection Workflow. |
-| Stock Market Quantitative Analysis R | Data-Driven Forecasting & Reporting. |
+| Harvard-CS50 | Harvard CS50: Introduction to Computer Science | [HarvardCS50 Link](https://github.com/RobNor12/RobNor12/tree/Harvard-CS50) |
+| S&P 500 vs Case-Shiller project| Data-Driven analysis of economy vs housing market | |
+| IEEE Fraud Analysis| Operational Risk & Fraud Detection Workflow. | |
+| Stock Market Quantitative Analysis R | Data-Driven Forecasting & Reporting. | |
 
 
 To access my branches, click on the main branch drop-down menu
