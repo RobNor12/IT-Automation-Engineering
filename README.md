@@ -39,7 +39,7 @@ A list of the branches that my repository contains
 | Name of Branch | Branch focus subject |
 | :--- | :--- |
 | Harvard-CS50 | Harvard CS50: Introduction to Computer Science |
-| S&P 500 vs Case-Shiller project| Data-Driving analysis of economy vs housing market |
+| S&P 500 vs Case-Shiller project| Data-Driven analysis of economy vs housing market |
 | IEEE Fraud Analysis| Operational Risk & Fraud Detection Workflow. |
 | Stock Market Quantitative Analysis R | Data-Driven Forecasting & Reporting. |
 
