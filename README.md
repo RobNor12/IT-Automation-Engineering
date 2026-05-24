@@ -29,6 +29,7 @@ A list of the branches that my repository contains
 | Name of Branch | Branch focus subject | link |
 | :--- | :--- | :--- |
 | IEEE Fraud Analysis| Operational Risk & Fraud Detection Workflow. | [IEEE Fraud Analysis link](https://github.com/RobNor12/RobNor12/blob/IEEE-Fraud-Analysis/README.md)|
+| inventory audit project | Automated invetory flagging | [audit project link](https://github.com/RobNor12/RobNor12/blob/inventory-audit-project/README.md)
 | Data cleaning pipeline | Automated data cleaning. | [Data cleaning pipeline link](https://github.com/RobNor12/RobNor12/blob/Data-cleaning-pipeline/README.md)
 | S&P 500 vs Case-Shiller project| Data-Driven analysis of the economy vs the housing market. | [S&P500 link](https://github.com/RobNor12/RobNor12/blob/S%26P-500-vs-Case-Shiller-project/README.md) |
 | Stock Market Quantitative Analysis R | Data-Driven Forecasting & Reporting. | [R Analysis link](https://github.com/RobNor12/RobNor12/blob/Stock-Market-Quantitative-Analysis-%7C-R/README.md) |
