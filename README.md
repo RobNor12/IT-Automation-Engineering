@@ -26,11 +26,9 @@ Through SQL-driven forensic analysis, I uncovered a critical risk nexus with a *
 * **Cardholder Verification:** Enhanced manual review for Credit transactions paired with anonymous domains.
 
 ## 🔗 Project Links
-[Interactive Tableau Dashboard: Tripple threat](https://public.tableau.com/app/profile/robert.norris3840/viz/FraudAnalysisTripleThreat/Sheet1)
-
-[Project Slideshow (PDF)](https://github.com/RobNor12/RobNor12/blob/IEEE-Fraud-Analysis/Slideshow/Fraud%20Analysis%20slideshow.pdf)
-
-[Data Source](https://www.kaggle.com/competitions/ieee-fraud-detection)
+* [Interactive Tableau Dashboard: Triple threat](https://public.tableau.com/app/profile/robert.norris3840/viz/FraudAnalysisTripleThreat/Sheet1)
+* [Project Slideshow (PDF)](https://github.com/RobNor12/RobNor12/blob/IEEE-Fraud-Analysis/Slideshow/Fraud%20Analysis%20slideshow.pdf)
+* [Data Source](https://www.kaggle.com/competitions/ieee-fraud-detection)
 
 ## Return page
 [Return to Repository Hub](https://github.com/RobNor12/RobNor12/blob/overview/README.md)
