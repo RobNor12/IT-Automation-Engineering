@@ -10,10 +10,9 @@ Email: rnorris12021@gmail.com
 
 Note: the best way to get in contact with me is through email
 
-## 👨‍💻 Credentials and Who I Am
+## 👨‍💻 Credintials 
 
-I am an inspiring IT professional interested in the fields of programming, data analytics, and data science
-
+My credentials
 
 | Crediental name | Crediental Classification | Issuing Authority | Crediental Link | Status | Completion date |  
 | :--- | :--- |:--- | :--- | :--- | :--- |
