@@ -10,9 +10,7 @@ Email: rnorris12021@gmail.com
 
 Note: the best way to get in contact with me is through email
 
-## 👨‍💻 Credintials 
-
-My credentials
+## 👨‍💻 Credentials
 
 | Crediental name | Crediental Classification | Issuing Authority | Crediental Link | Status | Completion date |  
 | :--- | :--- |:--- | :--- | :--- | :--- |
@@ -22,8 +20,6 @@ My credentials
 
 
 ## 📚 Repository Branches
-
-A list of the branches that my repository contains
 
 | Name of Branch | Branch focus subject | link |
 | :--- | :--- | :--- |
