@@ -31,3 +31,7 @@ The goal of this lab was to streamline the "Detection-to-Report" lifecycle, redu
 ### 💡 Lessons Learned 
 * **Persistence & Automation:** Tackled the challenges of database persistence in Docker-based SOC stacks, learning to manage service dependencies (depends_on and healthchecks) to ensure data integrity across reboots. 
 * **System Hardening & Security:** Navigated the balance between endpoint security (Windows Defender) and the need to run red-team tools for testing and verification.
+
+### Return page
+
+[Return to Repository Hub](https://github.com/RobNor12/RobNor12/blob/overview/README.md)
