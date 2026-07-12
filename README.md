@@ -35,7 +35,7 @@ The goal of this lab was to streamline the "Detection-to-Report" lifecycle, redu
 ### 📂 Repository Structure
 *   **[🧱 assets/](assets/)** 🛠️
     *   Contains the infrastructure "blueprints," including `docker-compose.yml` configurations, Wazuh custom rules, and exported Shuffle workflows.
-*   **[📖 docs/](docs/)** 🖼️
+*   **[📖 documentation/](documentation/)** 🖼️
     *   Houses the project documentation, including architectural diagrams, workflow logic, and screenshots of the detection pipeline in action.
 
 ### Return page
