@@ -32,6 +32,12 @@ The goal of this lab was to streamline the "Detection-to-Report" lifecycle, redu
 * **Persistence & Automation:** Tackled the challenges of database persistence in Docker-based SOC stacks, learning to manage service dependencies (depends_on and healthchecks) to ensure data integrity across reboots. 
 * **System Hardening & Security:** Navigated the balance between endpoint security (Windows Defender) and the need to run red-team tools for testing and verification.
 
+### 📂 Repository Structure
+*   **[🧱 assets/](assets/)** 🛠️
+    *   Contains the infrastructure "blueprints," including `docker-compose.yml` configurations, Wazuh custom rules, and exported Shuffle workflows.
+*   **[📖 docs/](docs/)** 🖼️
+    *   Houses the project documentation, including architectural diagrams, workflow logic, and screenshots of the detection pipeline in action.
+
 ### Return page
 
 [Return to Repository Hub](https://github.com/RobNor12/RobNor12/blob/overview/README.md)
