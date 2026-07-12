@@ -28,9 +28,13 @@ The goal of this lab was to streamline the "Detection-to-Report" lifecycle, redu
 * **Detection Logic:** Configured Wazuh to monitor specific Sysmon Event IDs (e.g., process creation for mimikatz.exe).
 * **Orchestration:** Built a custom Shuffle workflow to act as the "middleman," transforming raw logs into actionable incident reports.
 
-### 💡 Lessons Learned 
-* **Persistence & Automation:** Tackled the challenges of database persistence in Docker-based SOC stacks, learning to manage service dependencies (depends_on and healthchecks) to ensure data integrity across reboots. 
-* **System Hardening & Security:** Navigated the balance between endpoint security (Windows Defender) and the need to run red-team tools for testing and verification.
+### 📊 Project Visuals
+
+|Component | Description | Image |
+| :--- | :--- | :--- | 
+| Shuffle Workflow| The logic flow that automates enrichment and API communication. | |
+|Wazuh Dashboard| Visualization of endpoint telemetry and detection triggers. | |
+|TheHive Case| A fully populated incident case containing enriched data. | |
 
 ### 📂 Repository Structure
 *   **[🧱 assets/](assets/)** 🛠️
