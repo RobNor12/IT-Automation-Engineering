@@ -1,15 +1,14 @@
 # Forensic Fraud Analysis: The "Triple Threat" Vector
-Analyzing 506k+ E-commerce Transactions to Identify High-Risk Behavioral Patterns
 
-## 🎯 Project Objective
-This project identifies high-probability fraud signatures within the IEEE-CIS dataset. By merging transaction metadata with identity records, I developed a multivariate risk model to isolate the intersection of anonymity and hardware spoofing.
+### 🎯 Project Objective
+This project analyzes 506k+ e-commerce transactions to identify high-probability fraud signatures within the IEEE-CIS dataset. By merging transaction metadata with identity records, I developed a multivariate risk model to isolate the intersection of anonymity and hardware spoofing.
 
-## 🛠️ Technical Stack
+### 🛠️ Technical Stack
 * **Data Engineering:** Google BigQuery (SQL) using CTEs and complex Joins.
 * **Analysis:** AI Prompting (logic verification).
 * **Visualization:** Tableau Public (Heatmaps & Risk Scoring).
 
-## 🔍 Key Discovery: The "Triple Threat."
+## #🔍 Key Discovery: The "Triple Threat."
 Through SQL-driven forensic analysis, I uncovered a critical risk nexus with a **95%+ fraud correlation**:
 * **Anonymity:** Encrypted email domains (Protonmail).
 * **Device Spoofing:** Desktop environments presenting Mobile hardware signatures.
