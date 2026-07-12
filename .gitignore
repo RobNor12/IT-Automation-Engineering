@@ -1,0 +1,18 @@
+# --- Secrets and Credentials ---
+*.env
+*.key
+*.pem
+*.secret
+*.token
+
+# --- OS/System Files ---
+.DS_Store
+Thumbs.db
+
+# --- Docker & Lab Specific ---
+**/data/cassandra/
+**/data/elasticsearch/
+**/data/thehive/data/
+
+# If you have logs, ignore them too
+*.log
