@@ -1,0 +1,47 @@
+version: '3'
+services:
+  cassandra:
+    image: cassandra:4.1
+    container_name: cassandra
+    volumes:
+      - ./data/cassandra:/var/lib/cassandra
+    ports:
+      - "9042:9042"
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -e 'DESCRIBE KEYSPACES'"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    environment:
+      - MAX_HEAP_SIZE=1G
+      - HEAP_NEWSIZE=200M
+
+  elasticsearch:
+    image: elasticsearch:7.17.22
+    container_name: elasticsearch
+    environment:
+      - cluster.name=thehive
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+ volumes:
+      - ./data/elasticsearch:/user/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+
+  thehive:
+    image: strangebee/thehive:5.5.0
+    container_name: thehive
+    ports:
+      - "9000:9000"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - CASSANDRA_CLUSTER_NAME=TheHive
+      - CASSANDRA_HOSTNAME=cassandra
+    depends_on:
+      cassandra:
+        condition: service_healthy # TheHive won't start until Cassandra passes the health check
+      elasticsearch:
+        condition: service_started
+    volumes:
+      - ./data/thehive/data:/opt/thehive/data
