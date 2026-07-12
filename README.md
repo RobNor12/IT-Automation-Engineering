@@ -13,7 +13,7 @@ The goal of this lab was to streamline the "Detection-to-Report" lifecycle, redu
 * **Case Management:** TheHive (Incident Response)
 * **Threat Intelligence:** VirusTotal API
 
-### ⚙️ Key Features
+### ⚙️ Architecture
 (Insert your diagram here—if you don't have one, keep it simple with text:)
 [Windows 10 / Sysmon] → [Wazuh Agent] → [Wazuh Server] → [Shuffle Webhook] → [VirusTotal API] → [TheHive API]
 
