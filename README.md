@@ -29,5 +29,7 @@ Through SQL-driven forensic analysis, I uncovered a critical risk nexus with a *
 * [Project Slideshow (PDF)](https://github.com/RobNor12/RobNor12/blob/IEEE-Fraud-Analysis/Slideshow/Fraud%20Analysis%20slideshow.pdf)
 * [Data Source](https://www.kaggle.com/competitions/ieee-fraud-detection)
 
+<hr> 
+
 ### Return page
 [Return to Repository Hub](https://github.com/RobNor12/RobNor12/blob/overview/README.md)
