@@ -1,6 +1,6 @@
 # Forensic Fraud Analysis: The "Triple Threat" Vector
 
-### 🎯 Objective
+### 📖 Objective
 This project analyzes 506k+ e-commerce transactions to identify high-probability fraud signatures within the IEEE-CIS dataset. By merging transaction metadata with identity records, I developed a multivariate risk model to isolate the intersection of anonymity and hardware spoofing.
 
 ### 🛠️ Technical Stack
