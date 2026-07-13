@@ -30,6 +30,8 @@ The goal of this lab was to streamline the "Detection-to-Report" lifecycle, redu
 *   **[📖 documentation/](documentation/)** 🖼️
     *   Houses the project documentation, including architectural diagrams, workflow logic, and screenshots of the detection pipeline in action.
 
+<hr> 
+
 ### Return page
 
 [Return to Repository Hub](https://github.com/RobNor12/RobNor12/blob/overview/README.md)
