@@ -1,6 +1,6 @@
 # SOC Automation Home Lab: Automated Threat Detection & Enrichment
 
-### 📖Project Overview: 
+### 📖 Overview
 This project demonstrates an automated security monitoring and alert enrichment pipeline. By simulating malicious activity on a Windows 10 endpoint, the system automatically detects threats via Wazuh, orchestrates log enrichment through Shuffle, and centralizes incident reporting within TheHive.
 
 The goal of this lab was to streamline the "Detection-to-Report" lifecycle, reducing manual analyst work by automating the gathering of threat intelligence and initial incident categorization.
