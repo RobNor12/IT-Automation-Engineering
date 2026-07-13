@@ -27,6 +27,7 @@ Note: the best way to get in contact with me is through email
 | inventory audit project | Automated invetory flagging | [Audit Project Link](https://github.com/RobNor12/RobNor12/blob/inventory-audit-project/README.md)
 | Data cleaning pipeline | Automated data cleaning. | [Data Cleaning Pipeline Link](https://github.com/RobNor12/RobNor12/blob/Data-cleaning-pipeline/README.md)
 | S&P 500 vs Case-Shiller project| Data-Driven analysis of the economy vs the housing market. | [S&P500 Project Link](https://github.com/RobNor12/RobNor12/blob/S%26P-500-vs-Case-Shiller-project/README.md) |
+| SOC automation homelab | Automated SOC lab focused on report generation | [SOC automation link]()|
 
 
 To access my branches, click on the main branch drop-down menu or click the link if you want to go to a specific branch
