@@ -13,10 +13,6 @@ The goal of this lab was to streamline the "Detection-to-Report" lifecycle, redu
 * **Case Management:** TheHive (Incident Response)
 * **Threat Intelligence:** VirusTotal API
 
-### ⚙️ Architecture
-(Insert your diagram here—if you don't have one, keep it simple with text:)
-[Windows 10 / Sysmon] → [Wazuh Agent] → [Wazuh Server] → [Shuffle Webhook] → [VirusTotal API] → [TheHive API]
-
 ### 🚀 Key Features
 * **Automated Telemetry Generation:** Utilized Mimikatz to trigger specific Windows Event IDs, verified via Sysmon to ensure high-fidelity detection.
 * **Automated Enrichment Pipeline:** When Wazuh detects a security event, a Shuffle workflow is triggered via Webhook. It automatically parses the alert, queries VirusTotal for hash reputation, and formats the metadata.
@@ -27,14 +23,6 @@ The goal of this lab was to streamline the "Detection-to-Report" lifecycle, redu
 * **Telemetry:** Installed Sysmon on a Windows 10 VM to capture process execution, file integrity, and network connection events.
 * **Detection Logic:** Configured Wazuh to monitor specific Sysmon Event IDs (e.g., process creation for mimikatz.exe).
 * **Orchestration:** Built a custom Shuffle workflow to act as the "middleman," transforming raw logs into actionable incident reports.
-
-### 📊 Project Visuals
-
-|Component | Description | Image |
-| :--- | :--- | :--- | 
-| Shuffle Workflow| The logic flow that automates enrichment and API communication. | |
-|Wazuh Dashboard| Visualization of endpoint telemetry and detection triggers. | |
-|TheHive Case| A fully populated incident case containing enriched data. | |
 
 ### 📂 Repository Structure
 *   **[🧱 assets/](assets/)** 🛠️
