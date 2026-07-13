@@ -15,8 +15,8 @@ Note: the best way to get in contact with me is through email
 | Crediental name | Crediental Classification | Issuing Authority | Crediental Link | Status | Completion date |  
 | :--- | :--- |:--- | :--- | :--- | :--- |
 | Associates of Applied Sciences: Information Technology | Associates degree | Pearl River Community Collage(Popularville, Mississippi) | N/A | Graduated | May, 2025 |
-| CompTIA Security+ | Certification | CompTIA | [Security+ Link](https://cp.certmetrics.com/comptia/en/public/verify/credential/231ES6TY4EVE2QK2)| Completed | April 2025-2028|
-| Google Cybersecurity Professional Certificate | Certificate | Coursera | [Google Certificate Link](https://coursera.org/share/0d13437d0d03c5538258d5740e011ce2)| Completed | January 2025 |
+| CompTIA Security+ | Certification | CompTIA | [Security+ Link](https://cp.certmetrics.com/comptia/en/public/verify/credential/231ES6TY4EVE2QK2) | Completed | April 2025-2028|
+| Google Cybersecurity Professional Certificate | Certificate | Coursera | [Google Certificate Link](https://coursera.org/share/0d13437d0d03c5538258d5740e011ce2) | Completed | January 2025 |
 
 
 ## 📚 Repository Branches
