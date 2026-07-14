@@ -24,7 +24,7 @@ Note: the best way to get in contact with me is through email
 | Name of Branch | Branch focus subject | link |
 | :--- | :--- | :--- |
 | IEEE Fraud Analysis| Operational Risk & Fraud Detection Workflow. | [IEEE Fraud Analysis Link](https://github.com/RobNor12/RobNor12/tree/IEEE-Fraud-Analysis/README.md) |
-| Inventory Audit Project | Automated invetory flagging | [Audit Project Link](https://github.com/RobNor12/RobNor12/tree/Inventory-Audit-Project/README.md) |
+| Python Email Threat Parsing | Automated threat intelligence parsing through python | [Email Parsing Link](https://github.com/RobNor12/RobNor12/blob/Python-Email-Threat-Parser/README.md) |
 | Data Cleaning Pipeline | Automated data cleaning. | [Data Cleaning Pipeline Link](https://github.com/RobNor12/RobNor12/tree/Data-Cleaning-Pipeline/README.md) |
 | Wazuh Alert Analyzer | Automated log parsing through python | [Log Parser Link](https://github.com/RobNor12/RobNor12/tree/Wazuh-Alert-Analyzer) |
 | SOC Automation Homelab | Automated SOC lab focused on report generation | [SOC automation link](https://github.com/RobNor12/RobNor12/tree/Soc-Automation-Homelab/README.md) |
