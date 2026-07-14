@@ -1,33 +1,43 @@
-# 🎓 Professional Portfolio Hub
+# Python Email Threat Parser
+### Overview
+The Python Email Threat Parser is a security-focused automation tool designed to streamline the triage of suspicious emails and domains. By integrating the VirusTotal API, this script enables security analysts to perform rapid reputation checks on sender domains, automate threat flagging, and maintain an organized research queue for incident response.
 
-Hello, I'm Robert Norris III, and welcome to my GitHub page. This page is an overview of my repository and its branches
+### Technology Used
+Python: Used for the core script logic, API request handling, and user interaction.
 
-## 📞 How to Contact Me
+Pandas: Used for robust CSV data management, ensuring persistent storage of flagged threats and efficient duplicate checking.
 
-LinkedIn: www.linkedin.com/in/robert-n-331315345
+VirusTotal: The primary threat intelligence source, providing real-time maliciousness statistics for domains and sender addresses.
 
-Email: rnorris12021@gmail.com
+### Key Features
+Automated Intelligence Lookup: Automatically queries the VirusTotal database to retrieve real-time maliciousness data, reducing the need for manual research.
 
-Note: the best way to get in contact with me is through email
+Intelligent Triage Workflow: Normalizes input data (stripping emails to domains) and supports manual flagging for suspicious targets that may not yet be flagged by antivirus engines.
 
-## 👨‍💻 Credentials
+Duplicate Prevention: Includes a local database check to prevent redundant API calls for domains already under review.
 
-| Crediental name | Crediental Classification | Issuing Authority | Crediental Link | Status | Completion date |  
-| :--- | :--- |:--- | :--- | :--- | :--- |
-| Associates of Applied Sciences: Information Technology | Associates degree | Pearl River Community Collage(Popularville, Mississippi) | N/A | Graduated | May, 2025 |
-| CompTIA Security+ | Certification | CompTIA | [Security+ Link](https://cp.certmetrics.com/comptia/en/public/verify/credential/231ES6TY4EVE2QK2) | Completed | April 2025-2028|
-| Google Cybersecurity Professional Certificate | Certificate | Coursera | [Google Certificate Link](https://www.coursera.org/account/accomplishments/specialization/certificate/TATDKTYEMNGM) | Completed | January 2025 |
+Actionable Audit Trail: Automatically logs flagged threats into a structured CSV file, maintaining a clean record for security teams to investigate further.
 
+### How to Use
+Prepare your environment: Ensure you have your api_key.txt file ready in your project directory.
 
-## 📚 Repository Branches
+Install dependencies: Ensure pandas and requests are installed in your environment.
 
-| Name of Branch | Branch focus subject | link |
-| :--- | :--- | :--- |
-| IEEE Fraud Analysis| Operational Risk & Fraud Detection Workflow. | [IEEE Fraud Analysis Link](https://github.com/RobNor12/RobNor12/tree/IEEE-Fraud-Analysis/README.md) |
-| Inventory Audit Project | Automated invetory flagging | [Audit Project Link](https://github.com/RobNor12/RobNor12/tree/Inventory-Audit-Project/README.md) |
-| Data Cleaning Pipeline | Automated data cleaning. | [Data Cleaning Pipeline Link](https://github.com/RobNor12/RobNor12/tree/Data-Cleaning-Pipeline/README.md) |
-| Wazuh Alert Analyzer | Automated log parsing through python | [Log Parser Link](https://github.com/RobNor12/RobNor12/tree/Wazuh-Alert-Analyzer) |
-| SOC Automation Homelab | Automated SOC lab focused on report generation | [SOC automation link](https://github.com/RobNor12/RobNor12/tree/Soc-Automation-Homelab/README.md) |
+Run the script:
 
+Bash
+python main.py
+Enter target: Provide the domain or email address when prompted.
 
-To access my branches, click on the main branch drop-down menu or click the link if you want to go to a specific branch
+Review results: If the target is flagged, it will notify you immediately; if clean, you can opt to add it to the email_review.csv file for further investigation by your team.
+
+### MIT License
+MIT License
+
+Copyright (c) 2026
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
