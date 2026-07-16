@@ -1,13 +1,13 @@
 # Python Email Threat Parser & Triage System
 ### 📖 Overview
-The Python Email Threat Parser & Triage System is a professional-grade automation pipeline designed to streamline the incident response process. By separating automated threat intelligence from manual investigation, this tool allows security analysts to move from rapid identification to documented disposition, significantly reducing manual research time.
+The Python Email Threat Parser & Triage System is an automated incident response pipeline designed to move security operations from manual, error-prone tasks to a standardized, audit-ready workflow. This system automates the ingestion of suspicious domains, provides real-time threat intelligence, and enforces strict operational security (OPSEC) for incident disposition.
 
 ### ⚙️ Architecture & Workflow
-This project utilizes a Dual-Tool Architecture:
+This project implements a secure, two-part pipeline that mirrors enterprise SOAR (Security Orchestration, Automation, and Response) workflows:
 
-* **main.py** (Threat Intelligence Parser): Automates initial domain/email reputation lookups via the VirusTotal API. It identifies known threats and allows analysts to escalate suspicious targets for further review.
+* **main.py (Threat Intelligence Parser):** Automates initial reputation lookups via the VirusTotal API. It provides rapid identification and allows analysts to escalate suspicious targets into a centralized review queue.
 
-* **reviewer.py** (Investigation Queue): A dedicated triage interface for analysts. This script allows you to review flagged targets, assign a final security disposition (Malicious or Clean), and maintain an audit-ready log for your team.
+* **reviewer.py (Secure Triage Interface):** A gated triage environment for security analysts. It ensures that only authorized personnel can finalize incident status, providing full attribution and forensic auditing.
 
 ### 🛠 Technology Used
 * **Python:** Core logic, API integration, and user-flow management.
@@ -17,39 +17,46 @@ This project utilizes a Dual-Tool Architecture:
 * **VirusTotal API:** Real-time threat intelligence data acquisition.
 
 ### 🚀 Key Features
-* **Automated Intelligence Lookup:** Queries VirusTotal in real-time to retrieve maliciousness statistics.
+* **Identity & Access Management (IAM):** The triage script implements a secure authentication gate, ensuring only authorized analysts can access and modify the threat log.
 
-* **Intelligent Duplicate Prevention:** Checks existing local records before querying the API, saving limited API credits.
+* **Forensic Audit Logging:** Every disposition (Malicious/Clean) is automatically timestamped and attributed to the specific analyst who performed the review.
 
-* **Workflow-Driven Disposition:** Supports a clear lifecycle for every investigated target: Unknown/Clean → Flagged for Review → Resolved.
+* **Schema Resiliency:** The system dynamically manages database growth, ensuring audit columns are initialized and maintained without requiring manual data migration.
 
-* **Audit-Ready Logging:** All investigations are logged in a structured format suitable for security team reporting.
+* **Operational Discipline:** By moving from manual checks to a scripted workflow, the system eliminates human error, standardizes decision-making, and maintains a clean, searchable incident history.
 
 ### ⚙️ How to Use
-* **1. Setup**
-Ensure your api_key.txt file is placed in your project directory (as defined in your constants).
+* **Setup:**
 
-* **2. Threat Parsing (main.py)**
-Run the script to check a domain or email address.
+  * Download the requirements.txt folder to ensure you have the Libraries necessary to run these programs
 
-      Bash
-      python main.py
+  * Ensure your "api_key.txt" file, "email_review.csv" file, and "authorized_analyst.csv" file are placed securely in your project directory. These files are not included in this repository
 
-The script will check the local database for existing reviews.
+* **Threat Parsing (main.py):**
 
-If new, it queries VirusTotal.
+   * Run the script to check a domain or email address.
 
-If clean, you can opt to flag it for the review queue.
+            Bash
+            python main.py
+            
+   * Performs reputation checks.
 
-* **3. Review & Disposition (reviewer.py)**
-Use this script to process your queue.
+   * Duplicates are ignored to conserve API credits.
 
-      Bash
-      python reviewer.py
+   * Suspicious targets are queued for the Reviewer.
+
+* **Review & Disposition (reviewer.py):**
+
+  * Use this script to process your queue.
+
+            Bash
+            python reviewer.py
   
-This will iterate through all entries marked as "Flagged Manually."
+  * Authenticates the analyst against the known_analyst.csv list.
 
-Allows the analyst to make the final determination (Malicious vs. Clean) and updates the master CSV file.
+  * Provides an interactive queue for disposition (M/C).
+
+  * Automatically appends Reviewer ID and Last_Updated timestamp to the audit log.
 
 ### MIT License
 MIT License
