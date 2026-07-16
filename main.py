@@ -4,8 +4,8 @@ import requests
 
 # Constants
 VT_DOMAIN_URL = 'https://virustotal.com'
-EMAIL_DOC = 'YOUR_CSV_PATH_HERE'
-VT_API_KEY = 'YOUR_API_KEY_PATH_HERE'
+EMAIL_DOC = 'YOUR_EMAIL_REVIEW_FILE_PATH_HERE'
+VT_API_KEY = 'YOUR_API_KEY_FILE_PATH_HERE'
 
 def get_api_key():
     if not os.path.exists(VT_API_KEY):
@@ -69,6 +69,18 @@ def is_already_flagged(target):
             return match.iloc[0]['Status']
     return None
 
+def get_flag_details(target):
+    if os.path.exists(EMAIL_DOC):
+        df = pd.read_csv(EMAIL_DOC)
+        match = df[df['Target'].str.lower() == target.lower()]
+        if not match.empty:
+            # Returns a dictionary of the latest data
+            return {
+                "status": match.iloc[0]['Status'],
+                "last_updated": match.iloc[0].get('Last_Updated', 'N/A')
+            }
+    return None
+
 def main():
     api_key = get_api_key()
     if not api_key:
@@ -76,12 +88,19 @@ def main():
 
     target = input("Enter email or domain to check: ").strip()
     if not target:
-        print("Input cannot be blank.")
+        return
+
+    # Check for details
+    details = get_flag_details(target)
+    if details:
+        print(f"[!] Info: '{target}' found in audit logs.")
+        print(f"    Status: {details['status']}")
+        print(f"    Last Verified: {details['last_updated']}")
         return
 
     # Capture the actual status returned from the CSV
     status = is_already_flagged(target)
-    
+
     if status:
         # Give the user specific info instead of a generic "already reviewed"
         print(f"[!] Info: '{target}' is already in our records with status: '{status}'.")
