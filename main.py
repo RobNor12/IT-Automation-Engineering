@@ -4,15 +4,15 @@ import requests
 
 # Constants
 VT_DOMAIN_URL = 'https://virustotal.com'
-EMAIL_DOC = 'YOUR_EMAIL_DOC_HERE'
-VT_API_KEY = 'YOUR_API_KEY_FILE_HERE'
+EMAIL_DOC = 'YOUR_CSV_PATH_HERE'
+VT_API_KEY = 'YOUR_API_KEY_PATH_HERE'
 
 def get_api_key():
     if not os.path.exists(VT_API_KEY):
         print("Security Alert: 'api_key.txt' is missing! Please upload it to the folder.")
         return None
     else:
-        # Utilizing pandas to read the key file allows for easy expansion if 
+        # Utilizing pandas to read the key file allows for easy expansion if
         # the key storage format changes to CSV/Table-based config later.
         df = pd.read_csv(VT_API_KEY, header=None)
         api_key = str(df.iloc[0, 0]).strip()
@@ -24,8 +24,8 @@ def validate_api_request(target_input, api_key):
         "accept": "application/json",
         "x-apikey": api_key
     }
-    
-    # Normalizing input: Ensuring the API receives only the domain portion 
+
+    # Normalizing input: Ensuring the API receives only the domain portion
     # to prevent malformed queries from email-style inputs.
     if "@" in target_input:
         domain = target_input.split("@")[-1]
@@ -33,9 +33,9 @@ def validate_api_request(target_input, api_key):
         domain = target_input
 
     api_endpoint = f"{VT_DOMAIN_URL}/{domain}"
-    
+
     response = requests.get(api_endpoint, headers=headers)
-    
+
     # Mapping API status codes to custom internal state markers
     if response.status_code == 429:
         print("Security Alert: Rate limit exceeded. Please try again later.")
@@ -48,9 +48,9 @@ def validate_api_request(target_input, api_key):
         return "INVALID"
 
     data = response.json()
-    
+
     try:
-        # Deep-path extraction into nested JSON response structure; 
+        # Deep-path extraction into nested JSON response structure;
         # KeyError handling prevents crashes if VT changes their response format.
         malicious_count = data['data']['attributes']['last_analysis_stats']['malicious']
         return malicious_count
@@ -59,15 +59,19 @@ def validate_api_request(target_input, api_key):
         return "INVALID"
 
 def is_already_flagged(target):
+    # Check if the CSV exists and if the target is already present in the "Target" column
     if os.path.exists(EMAIL_DOC):
-        df_existing = pd.read_csv(EMAIL_DOC)
-        if target.lower() in df_existing['Target'].str.lower().values:
-            return True
-    return False
+        df = pd.read_csv(EMAIL_DOC)
+        # Check if target exists
+        match = df[df['Target'].str.lower() == target.lower()]
+        if not match.empty:
+            # Return the status (e.g., "Malicious", "Clean", "Flagged Manually")
+            return match.iloc[0]['Status']
+    return None
 
 def main():
     api_key = get_api_key()
-    if not api_key: 
+    if not api_key:
         return
 
     target = input("Enter email or domain to check: ").strip()
@@ -75,9 +79,12 @@ def main():
         print("Input cannot be blank.")
         return
 
-    # Check the local database before reaching out to the API
-    if is_already_flagged(target):
-        print(f"[!] Alert: '{target}' has already been flagged for review.")
+    # Capture the actual status returned from the CSV
+    status = is_already_flagged(target)
+    
+    if status:
+        # Give the user specific info instead of a generic "already reviewed"
+        print(f"[!] Info: '{target}' is already in our records with status: '{status}'.")
         return
 
     malicious_count = validate_api_request(target, api_key)
@@ -105,8 +112,8 @@ def main():
 
         if choice == 'y':
             log_df = pd.DataFrame([[target, "Flagged Manually"]], columns=["Target", "Status"])
-            
-            # Appending mode maintains the audit trail; dynamic header logic 
+
+            # Appending mode maintains the audit trail; dynamic header logic
             # prevents header duplication in the persistent review file.
             file_exists = os.path.isfile(EMAIL_DOC)
             log_df.to_csv(EMAIL_DOC, mode='a', header=not file_exists, index=False)
