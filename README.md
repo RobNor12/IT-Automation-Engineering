@@ -28,7 +28,7 @@ This project implements a secure, two-part pipeline that mirrors enterprise SOAR
 ### ⚙️ How to Use
 * **Setup:**
 
-  * Download the requirements.txt folder to ensure you have the Libraries necessary to run these programs
+  * Download the requirements.txt file to ensure you have the Libraries necessary to run these programs
 
   * Ensure your "api_key.txt" file, "email_review.csv" file, and "authorized_analyst.csv" file are placed securely in your project directory. These files are not included in this repository
 
