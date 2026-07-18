@@ -17,4 +17,4 @@ To access my branches, click on the main branch drop-down menu or click the link
 
 ## 🔗 Related Work
 *   **[Lab Incident Analysis Portfolio](INSERT_LINK_TO_LAB_REPO):** See these tools in action against real-world scenarios in my Incident Analysis repository.
-*   **[Back to Profile Hub](https://github.com/RobNor12):** Return to my main portfolio landing page.
+*   **[Back to Profile Hub](https://github.com/RobNor12/Portfolio/tree/main):** Return to my main portfolio landing page.
