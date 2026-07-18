@@ -17,4 +17,4 @@ To access my branches, click on the main branch drop-down menu or click the link
 
 ## 🔗 Integrated Ecosystem
 *   **[View my Lab Incident Analysis Portfolio](https://github.com/RobNor12/Lab-Incident-Analysis-Portfolio).**
-*   **[View my Professional Identity & Credentials](https://github.com/RobNor12/Portfolio/tree/main).** 
+*   **[View my Professional Identity & Credentials](https://github.com/RobNor12/Portfolio/blob/main/README.md).** 
