@@ -1,6 +1,6 @@
-# 🎓 Professional Portfolio Hub
+# 🎓 Project Gallery Portfolio
 
-Hello, I'm Robert Norris III, and welcome to my GitHub page. This page is an overview of my repository and its branches
+Hello, I'm Robert Norris III, and welcome to my Project Gallery repository. This is where I upload my projects
 
 ## 📞 How to Contact Me
 
