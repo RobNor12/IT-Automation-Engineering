@@ -15,6 +15,6 @@ This repository houses my core security projects. I focus on developing modular,
 
 To access my branches, click on the main branch drop-down menu or click the link if you want to go to a specific branch
 
-## 🔗 Related Work
-*   **[Lab Incident Analysis Portfolio](https://github.com/RobNor12/Lab-Incident-Analysis-Portfolio):** See these tools in action against real-world scenarios in my Incident Analysis repository.
-*   **[Back to Profile Hub](https://github.com/RobNor12/Portfolio/tree/main):** Return to my main portfolio landing page.
+## 🔗 Integrated Ecosystem
+*   **[View my Lab Incident Analysis Portfolio](https://github.com/RobNor12/Lab-Incident-Analysis-Portfolio).**
+*   **[View my Professional Identity & Credentials](https://github.com/RobNor12/Portfolio/tree/main).** 
