@@ -6,7 +6,7 @@ This repository houses my core security projects. I focus on developing modular,
 
 | Project Name | Focus Subject | link |
 | :--- | :--- | :--- |
-| Data Cleaning Pipeline | Automated data cleaning. | [Data Cleaning Pipeline Link](https://github.com/RobNor12/RobNor12/tree/Data-Cleaning-Pipeline/README.md) |
+| Credential Generator & Lifecycle Manager | Automated Credential Manager. | [Credential Manager Link](https://github.com/RobNor12/Security-Engineering-Projects/blob/Credential-Generator-&-Lifecycle-Manager/README.md) |
 | IEEE Fraud Analysis| Operational Risk & Fraud Detection Workflow. | [IEEE Fraud Analysis Link](https://github.com/RobNor12/RobNor12/tree/IEEE-Fraud-Analysis/README.md) |
 | Python Email Threat Parsing | Automated threat intelligence parsing through python | [Email Parsing Link](https://github.com/RobNor12/RobNor12/blob/Python-Email-Threat-Parser/README.md) |
 | SOC Automation Homelab | Automated SOC lab focused on report generation | [SOC automation link](https://github.com/RobNor12/RobNor12/tree/Soc-Automation-Homelab/README.md) |
