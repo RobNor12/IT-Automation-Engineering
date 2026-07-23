@@ -23,7 +23,7 @@ The **Credential Generator** is a secure, command-line administrative utility de
 * **Run the Script:**
 
       Bash
-      python credential_generator.py
+      python cred_generator.py
 **Follow the Prompts:** Authenticate with your administrator password, choose whether to generate new credentials, review/manage existing ones, and exit safely. 
 
 ### MIT License
