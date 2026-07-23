@@ -16,7 +16,7 @@ The **Credential Generator** is a secure, command-line administrative utility de
 
 ## How to Use
 
-* **Setup: **
+* **Setup:**
   * Install requirements.txt to ensure you have the proper libraries needed to run the program
   * Ensure your "password_file" and "credential_file" are located securely in the programs directory
   
