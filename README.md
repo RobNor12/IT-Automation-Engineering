@@ -1,20 +1,19 @@
-# 🛠️ Security Engineering & Automation
+# Credential Generator & Lifecycle Manager
 
-This repository houses my core security projects. I focus on developing modular, automated tools to streamline security operations and reduce manual triage time.
+## Overview
+The **Credential Generator** is a secure, command-line administrative utility designed to reduce the manual labor and human error involved in producing and decommissioning standardized credentials for an organization. It enforces strict naming conventions, validates administrative permissions, and manages credential persistence cleanly through local data structures.
 
-## 📂 Project Directory
+## Technology Used
+* **Python** (Core scripting, input validation, and logic flow)
+* **Pandas** (Data manipulation and clean CSV persistence)
+* **OS / Sys / Random** (File safety checks, system exit handling, and secure ID generation)
 
-| Project Name | Focus Subject | link |
-| :--- | :--- | :--- |
-| Data Cleaning Pipeline | Automated data cleaning. | [Data Cleaning Pipeline Link](https://github.com/RobNor12/RobNor12/tree/Data-Cleaning-Pipeline/README.md) |
-| IEEE Fraud Analysis| Operational Risk & Fraud Detection Workflow. | [IEEE Fraud Analysis Link](https://github.com/RobNor12/RobNor12/tree/IEEE-Fraud-Analysis/README.md) |
-| Python Email Threat Parsing | Automated threat intelligence parsing through python | [Email Parsing Link](https://github.com/RobNor12/RobNor12/blob/Python-Email-Threat-Parser/README.md) |
-| SOC Automation Homelab | Automated SOC lab focused on report generation | [SOC automation link](https://github.com/RobNor12/RobNor12/tree/Soc-Automation-Homelab/README.md) |
-| Wazuh Alert Analyzer | Automated log parsing through python | [Log Parser Link](https://github.com/RobNor12/RobNor12/tree/Wazuh-Alert-Analyzer) |
+## Key Features
+* **Secure Authentication (`auth`)**: Validates administrative access against a localized credential tracking file and implements a compromise-detection check if multiple unexpected password entries are found.
+* **Standardized Generation (`gen_credentials`)**: Prompts administrators for names, enforces strict character limits (3–15 characters), extracts initials, and appends a cryptographically randomized 9-digit suffix separated by an underscore (e.g., `rlm_123456789`).
+* **Interactive Decommissioning (`remove_credentials`)**: Allows administrators to review existing credentials individually, decide whether to purge or keep them, and gracefully exit or save changes at any point.
+* **Robust Input Validation**: Implements strict validation loops on all user prompts to catch unexpected inputs and guide administrators safely.
 
+## How to Use
 
-To access my branches, click on the main branch drop-down menu or click the link if you want to go to a specific branch
-
-## 🔗 Integrated Ecosystem
-*   **[View my Lab Incident Analysis Portfolio](https://github.com/RobNor12/Lab-Incident-Analysis-Portfolio).**
-*   **[View my Professional Identity & Credentials](https://github.com/RobNor12/Profession-Identitiy-Portfolio).** 
+* **1.** install requirments.txt 
