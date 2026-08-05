@@ -122,7 +122,12 @@ def remove_credentials():
         else:
             print("[Error] Invalid choice, try again")
 
-        cont = input("Would you like to continue removing credentials? (continue/stop): ")
+        while True:
+            cont = input("Would you like to continue removing credentials? (continue/stop): ").strip().lower()
+            if cont in ["continue", "stop"]:
+                break
+            print("[Error] Invalid choice. Please enter 'continue' or 'stop'.")
+
         if cont == "stop":
             print("[Info] Stopping removal process.")
             break
