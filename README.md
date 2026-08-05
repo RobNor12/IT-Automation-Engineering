@@ -1,6 +1,6 @@
-# 🛠️ Security Engineering & Automation
+# 🛠️ Infrastructure Automation & Security Engineering
 
-This repository houses my core security projects. I focus on developing modular, automated tools to streamline security operations and reduce manual triage time.
+This repository houses my core systems and security engineering projects. I focus on developing modular, automated tools to streamline administrative workflows, user provisioning, and incident triage.
 
 ## 📂 Project Directory
 
