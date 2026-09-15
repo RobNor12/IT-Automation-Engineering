@@ -6,10 +6,10 @@ This repository houses my core systems and security engineering projects. I focu
 
 | Project Name | Focus Subject | link |
 | :--- | :--- | :--- |
-| Active Directory Hybrid homelab | Active directory lab connecing both Linux and Windows | [Active directory link](https://github.com/RobNor12/IT-Automation-Engineering/blob/Active-Directory-hybrid-Homelab/README.md)
+| Active Directory Hybrid homelab | Active directory lab connecing both Linux and Windows | [Active directory link](https://github.com/RobNor12/IT-Automation-Engineering/blob/Active-Directory-hybrid-Homelab/README.md) |
+| Azure AD Hybrid Lab | Azure Hybrid lab connecting both linux and windows alongside a vm outside azures network | [Azure Lab Link]()|
 | Credential Generator & Lifecycle Manager | Automated Credential Manager. | [Credential Manager Link](https://github.com/RobNor12/Security-Engineering-Projects/blob/Credential-Generator-&-Lifecycle-Manager/README.md) |
 | IEEE Fraud Analysis| Operational Risk & Fraud Detection Workflow. | [IEEE Fraud Analysis Link](https://github.com/RobNor12/RobNor12/tree/IEEE-Fraud-Analysis/README.md) |
-| Python Email Threat Parsing | Automated threat intelligence parsing through python | [Email Parsing Link](https://github.com/RobNor12/RobNor12/blob/Python-Email-Threat-Parser/README.md) |
 | SOC Automation Homelab | Automated SOC lab focused on report generation | [SOC automation link](https://github.com/RobNor12/RobNor12/tree/Soc-Automation-Homelab/README.md) |
 
 
