@@ -14,3 +14,4 @@ network:
       nameservers:
        addresses:
         - 10.10.10.4
+        - 172.16.100.2
