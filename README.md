@@ -1,406 +1,188 @@
-# Azure Hybrid Active Directory Lab
+# Azure Hybrid Active Directory & Domain Controller Redundancy Lab
 
-### 📖 Overview
+### Overview
 
-This project is a small hybrid Active Directory lab built in Microsoft Azure to practice Windows administration, Linux administration, Active Directory, DNS, authentication, network segmentation, and Azure networking.
+This project is a hybrid Active Directory lab designed to practice Windows Server administration, Active Directory, DNS, Azure networking, VPN connectivity, and domain-controller redundancy.
 
-The core environment consists of a Windows Server domain controller, a Windows 11 domain client, and an Ubuntu Linux domain client. Both Windows and Linux systems were successfully joined to and authenticated against the same Active Directory domain.
-
-The project was also designed with security and troubleshooting in mind by separating the virtual machines into individual subnets and applying role-specific Network Security Group (NSG) rules.
+The environment consists of a primary domain controller hosted in Microsoft Azure and a secondary domain controller hosted externally through Kamatera. Azure-based Windows and Linux clients are joined to the same Active Directory domain and can discover either domain controller.
 
 ---
 
-### 🎯 Project Goals
+### Objectives
 
-The primary goals of this project were to:
-
-* Build and configure an Active Directory environment in Azure.
-* Configure Active Directory Domain Services (AD DS) and DNS.
-* Create and manage organizational units, users, and security groups.
-* Join a Windows 11 client to the domain.
-* Join an Ubuntu Linux client to the domain.
-* Configure Linux authentication through Kerberos, SSSD, `realmd`, and `adcli`.
-* Segment workloads into separate Azure subnets.
-* Configure NSGs based on the role of each virtual machine.
-* Validate that security restrictions did not break required AD functionality.
-* Document troubleshooting and configuration decisions throughout the project.
-
-An additional stretch goal is to connect an external VM outside Azure to the Azure-hosted domain through a VPN and validate hybrid connectivity.
+* Deploy and administer Active Directory Domain Services in Microsoft Azure.
+* Configure DNS and Azure networking for an Active Directory environment.
+* Establish secure connectivity between Azure and an external network using an IKEv2 Point-to-Site VPN.
+* Deploy a secondary domain controller outside Azure.
+* Configure and verify Active Directory replication between domain controllers.
+* Validate domain-controller discovery and redundancy from Windows and Linux clients.
 
 ---
 
-### 🏗️ Architecture
+### Environment
 
-### Domain
+| Component      | Platform                         | Role                                             |
+| -------------- | -------------------------------- | ------------------------------------------------ |
+| DC02           | Microsoft Azure / Windows Server | Primary Domain Controller, DNS, Global Catalog   |
+| DC03           | Kamatera / Windows Server 2022   | Secondary Domain Controller, DNS, Global Catalog |
+| Windows Client | Microsoft Azure                  | Domain-joined client                             |
+| Linux Client   | Microsoft Azure / Ubuntu         | Domain-joined client                             |
 
-| Setting           | Value               |
-| ----------------- | ------------------- |
-| AD Domain         | `ad.hybridlab.test` |
-| NetBIOS Name      | `AD`                |
-| Domain Controller | `DC02`              |
-| DC Private IP     | `10.10.10.4`        |
-
-### Virtual Machines
-
-| VM      | Role                    | Operating System                  | Subnet          |
-| ------- | ----------------------- | --------------------------------- | --------------- |
-| `DC02`  | Domain Controller / DNS | Windows Server 2022 Azure Edition | `10.10.10.0/24` |
-| `WIN01` | Windows Domain Client   | Windows 11                        | `10.10.20.0/24` |
-| `LNX01` | Linux Domain Client     | Ubuntu 22.04                      | `10.10.30.0/24` |
-
-The virtual machines were intentionally placed into separate subnets instead of a single shared subnet. This allows network traffic to be controlled according to each machine's role.
+**Active Directory Domain:** `ad.hybridlab.test`
 
 ---
 
-### 🖥️ Azure Resources
+### Architecture
 
-The lab uses the following Azure resources:
+![Hybrid Active Directory Architecture](./assets/architecture.png)
 
-* Resource Group: `rg-azure-hybrid-lab`
-* Virtual Network: `vnet-hybrid-lab`
-* Separate subnet for each virtual machine
-* One Network Security Group per workload
-* Three Azure virtual machines
-* Azure-managed networking and private IP addressing
+The environment uses Azure Point-to-Site VPN connectivity to connect the external DC03 server to the Azure network.
 
-The Azure resources were deployed primarily through Azure PowerShell.
+* **DC02** provides the primary Active Directory and DNS services.
+* **DC03** provides a second writable domain controller and Global Catalog.
+* **Azure Windows and Linux clients** can discover available domain controllers through Active Directory DNS/DC Locator.
+* **DC02 and DC03** replicate Active Directory data across the VPN connection.
 
 ---
 
-### ⚙️ Active Directory Structure
+### Implementation
 
-The Active Directory environment uses separate organizational units for different roles:
+### Azure Domain Controller
 
-```text
-ad.hybridlab.test
-│
-├── IT
-├── HR
-├── Sales
-└── DCAdmins
-```
+The initial environment was deployed in Microsoft Azure with Windows Server configured as the primary domain controller.
 
-Security groups were created to represent the different administrative or organizational roles:
-
-```text
-SG-IT
-SG-HR
-SG-Sales
-SG-DCAdmins
-```
-
-Test accounts were created and assigned to the appropriate groups to validate group membership and access control.
-
-The domain administrator account was kept separate from the normal test users so that delegated permissions could be tested independently from full domain administration.
-
----
-
-### 🛠 Domain Controller
-
-`DC02` was deployed as a Windows Server 2022 Azure Edition virtual machine and configured with:
+Key services and components included:
 
 * Active Directory Domain Services
-* Active Directory-integrated DNS
-* Domain `ad.hybridlab.test`
+* DNS
+* Global Catalog
+* Azure Virtual Network
+* Azure Network Security Group
+* PowerShell-based administration
 
-The domain controller was configured and tested before joining the client machines.
+### External Domain Controller
 
-Basic AD validation included:
+A separate Windows Server 2022 system was deployed in Kamatera and added to the existing `ad.hybridlab.test` domain.
 
-```powershell
-Get-ADDomain
-Get-ADDomainController
-dcdiag
-dcdiag /test:dns
+DC03 was promoted to a writable domain controller and Global Catalog, providing a second domain controller outside the Azure environment.
+
+![DC03 Domain Controller](./assets/DC03/dc03-domain-controller.png)
+
+### Azure Point-to-Site VPN
+
+An IKEv2 Point-to-Site VPN was configured to provide connectivity between the Azure environment and DC03.
+
+DC03 received the VPN address:
+
+`172.16.100.2`
+
+The VPN allowed DC03 to communicate with the Azure domain controller at:
+
+`10.10.10.4`
+
+![Azure P2S VPN Session](./assets/VPN/p2s-connected.png)
+
+### Active Directory Replication
+
+Replication between DC02 and DC03 was verified using `repadmin`.
+
+Final replication status:
+
+```text
+Source DSA          fails/total
+DC02                0 / 5
+DC03                0 / 5
 ```
 
-The domain was also tested by creating users, security groups, and computer accounts.
+![AD Replication Status](./assets/DC03/dc03-replication.png)
+
+### Domain Controller Health
+
+DC03 was validated using `dcdiag` for DNS, NetLogons, and Advertising.
+
+```text
+DC03 passed test Advertising
+DC03 passed test NetLogons
+DC03 passed test DNS
+
+ad.hybridlab.test passed test DNS
+```
+
+![DC03 Health Checks](./assets/DC03/dc03-health.png)
 
 ---
+
+### Client Redundancy
+
+The existing Azure Windows and Linux clients were configured as members of the `ad.hybridlab.test` domain.
+
+Both clients were tested for domain-controller discovery to verify that DC02 and DC03 were available through Active Directory DNS and DC Locator.
 
 ### Windows Client
 
-`WIN01` was configured to use the domain controller's private IP address (`10.10.10.4`) as its DNS server.
-
-Connectivity to the domain controller was tested before performing the domain join.
-
-Examples of validation performed on the Windows client included:
-
 ```powershell
-Test-NetConnection 10.10.10.4 -Port 53
-Test-NetConnection 10.10.10.4 -Port 88
-Test-NetConnection 10.10.10.4 -Port 389
+nltest /dsgetdc:ad.hybridlab.test /force
 ```
 
-After successful connectivity testing, `WIN01` was joined to:
+The client was able to discover available domain controllers in the domain.
 
-```text
-ad.hybridlab.test
-```
-
-Domain membership was verified with:
-
-```powershell
-(Get-CimInstance Win32_ComputerSystem).PartOfDomain
-```
-
-which returned:
-
-```text
-True
-```
-
-The resulting computer account was then moved from the default `Computers` container into the appropriate organizational unit through Active Directory Users and Computers.
-
----
+![Windows Domain Controller Discovery](./assets/Windows-Client/dc-discovery.png)
 
 ### Linux Client
 
-`LNX01` was configured as an Ubuntu 22.04 Active Directory client.
-
-The following Linux components were used:
-
-* `realmd`
-* `adcli`
-* `sssd`
-* `sssd-ad`
-* Kerberos
-* Samba components
-* `packagekit`
-
-Ubuntu was configured to use the Active Directory domain controller as its DNS server:
-
-```text
-10.10.10.4
-```
-
-The Linux system was joined using:
+The Linux client was tested using DNS-based Active Directory discovery.
 
 ```bash
-sudo realm join ad.hybridlab.test -U 'lab-domain-admin'
+nslookup -type=SRV _ldap._tcp.ad.hybridlab.test
 ```
 
-After joining, the Linux machine was validated with:
+The returned records included both DC02 and DC03.
 
-```bash
-realm list
-```
-
-```bash
-sudo adcli testjoin
-```
-
-```bash
-id 'ituser01@ad.hybridlab.test'
-```
-
-SSSD was also verified to be running:
-
-```bash
-sudo systemctl status sssd
-```
-
-The Linux client successfully resolved domain users, authenticated against Active Directory, and established a machine account in AD.
-
-The resulting `LNX01` computer object was moved into the `IT` OU.
+![Linux Domain Controller Discovery](./assets/Linux-Client/dc-discovery.png)
 
 ---
 
-### 🛡️ Network Security
+### Troubleshooting
 
-Each virtual machine has its own Network Security Group so that network traffic can be controlled according to the workload.
+During implementation, several Active Directory and DNS issues were encountered.
 
-### DC02
+One significant issue was Active Directory replication error `8524`, indicating a DNS lookup failure. Investigation with `dcdiag`, `repadmin`, `nslookup`, and `nltest` identified DNS registration issues affecting the new domain controller.
 
-The domain controller permits inbound traffic required for:
+After correcting the DNS configuration and forcing DNS/Netlogon registration, the required Active Directory SRV and CNAME records became available and replication completed successfully.
 
-| Service             | Port | Protocol | Purpose                              |
-| ------------------- | ---: | -------- | ------------------------------------ |
-| RDP                 | 3389 | TCP      | Administrative access                |
-| DNS                 |   53 | TCP/UDP  | DNS resolution                       |
-| Kerberos            |   88 | TCP/UDP  | Authentication                       |
-| LDAP / DC Locator   |  389 | TCP/UDP  | Directory services                   |
-| SMB                 |  445 | TCP      | Windows file and AD-related services |
-| RPC Endpoint Mapper |  135 | TCP      | Windows RPC                          |
-
-Administrative access is restricted to the administrator's external IP address where applicable.
-
-Outbound traffic from the domain controller was left at the normal Azure defaults because the domain controller provides infrastructure services and may require general outbound connectivity.
-
-### WIN01
-
-Inbound access is primarily restricted to:
-
-```text
-TCP 3389 → RDP administration
-```
-
-Outbound traffic is restricted to the traffic required to communicate with the domain controller and perform normal client operations.
-
-### LNX01
-
-Inbound access is primarily restricted to:
-
-```text
-TCP 22 → SSH administration
-```
-
-Outbound traffic includes the required DNS, Kerberos, LDAP, and related Active Directory communication directed toward the domain controller.
-
-The goal was to avoid exposing AD services unnecessarily while maintaining the functionality required by the lab.
+This troubleshooting process helped validate the relationship between Active Directory replication, DNS, Netlogon, and domain-controller discovery.
 
 ---
 
-### 📋 Validation
+### Verification
 
-The completed Azure environment was tested from both Windows and Linux.
+The final environment successfully demonstrated:
 
-### Active Directory
-
-* AD DS installed and operational
-* DNS zone for `ad.hybridlab.test` operational
-* Test users successfully created
-* Security groups successfully created
-* Computer accounts successfully created and managed
-* Domain controller health verified with AD diagnostic tools
-
-### Windows
-
-* Windows client successfully resolved the domain controller
-* Required AD ports were reachable
-* Windows client successfully joined the domain
-* Domain membership verified
-* Domain user authentication verified
-
-### Linux
-
-* Linux client successfully resolved the domain controller
-* Kerberos authentication successfully obtained a ticket
-* LDAP service ticket successfully obtained
-* Linux client successfully joined the domain
-* SSSD successfully started
-* AD users successfully resolved through SSSD
-* Linux machine trust successfully validated with `adcli testjoin`
-* Domain user authentication successfully tested
-
-### Network Security
-
-After implementing the NSG rules, connectivity tests were repeated to ensure that required Active Directory functionality remained operational.
-
-This provided a basic validation of the security changes rather than assuming that the rules were correct.
+* Two writable Active Directory domain controllers.
+* Both domain controllers operating as Global Catalog servers.
+* Successful DNS registration for DC03.
+* Successful Active Directory replication between DC02 and DC03.
+* Successful DNS, NetLogon, and DC advertising health checks.
+* Successful Azure-to-external connectivity through the P2S VPN.
+* Windows and Linux clients able to discover available domain controllers.
 
 ---
 
-### 🔧 Troubleshooting
+### Technologies
 
-### Azure VM Allocation and SKU Compatibility
-
-The original domain controller encountered Azure VM allocation problems.
-
-The VM was initially using a SKU that Azure could no longer reliably allocate in the selected region. Several potential replacement SKUs also introduced compatibility restrictions involving NVMe storage and confidential computing.
-
-This ultimately led to rebuilding the domain controller with a supported VM configuration rather than spending the remaining lab time waiting for Azure capacity to change.
-
-### Linux Active Directory Join
-
-The Linux domain join initially returned:
-
-```text
-Insufficient permissions to join the domain
-```
-
-Verbose `realm join` output revealed that the actual failure was occurring during Kerberos GSSAPI/SASL authentication:
-
-```text
-Server not found in Kerberos database
-```
-
-The issue was isolated by testing each component independently:
-
-```text
-DNS resolution                 → working
-Kerberos authentication       → working
-LDAP service ticket           → working
-AD credentials                → working
-```
-
-A hostname/reverse-DNS inconsistency was then addressed by configuring Kerberos not to rely on reverse DNS during service discovery.
-
-The subsequent join succeeded and created the Linux computer account, machine password, SPNs, and Kerberos keytab entries.
-
-### Ubuntu DNS Reverting to Azure DNS
-
-After the Linux VM was restarted, Ubuntu repeatedly returned to Azure's DHCP-provided DNS server:
-
-```text
-168.63.129.16
-```
-
-instead of consistently using the AD DNS server:
-
-```text
-10.10.10.4
-```
-
-Direct DNS queries to `10.10.10.4` worked, proving the AD DNS server itself was functioning.
-
-The issue was corrected through the Netplan configuration by preventing DHCP-provided DNS from replacing the manually configured DNS server:
-
-```yaml
-dhcp4-overrides:
-  use-dns: false
-
-nameservers:
-  addresses:
-    - 10.10.10.4
-```
-
-After the change, normal system resolution successfully located:
-
-```text
-dc02.ad.hybridlab.test
-```
-
-and the configuration remained functional after subsequent validation.
-
-### NSG Configuration
-
-During security-rule testing, a few configuration mistakes were identified, including an incorrect LDAP destination port.
-
-The NSGs were corrected and connectivity was retested afterward.
-
-This reinforced the importance of validating individual protocol requirements rather than assuming that a generic "AD" rule is sufficient.
-
----
-
-### 💡 Lessons Learned
-
-This project reinforced several practical administration concepts:
-
-* Active Directory depends heavily on reliable DNS.
-* Kerberos authentication is sensitive to hostname and service-principal configuration.
-* Linux can integrate with Active Directory through standard identity and authentication components such as SSSD, Kerberos, `realmd`, and `adcli`.
-* OUs are useful for organization and policy application, while security groups are better suited for access control.
-* Azure VM size availability depends on more than CPU and memory requirements; regional capacity, architecture, storage controller, quota, and security features can all affect deployment.
-* NSGs should be designed around the actual traffic requirements of each workload.
-* Testing individual network layers makes troubleshooting significantly easier.
-
----
-
-### 🏗️ Repository Structure
-
-*   [🧱 assets/](assets/)
-    *   Contains the infrastructure "blueprints," including `smb.conf` configurations.
-
----
-
-### 🚀 Future Work
-
-The primary Azure AD environment is complete.
-
-The remaining stretch goal is to establish connectivity from an external VM outside the Azure VNet and validate that the external machine can communicate with and authenticate against the Azure-hosted domain controller.
-
-This would extend the project from an Azure-only Active Directory environment into a more complete hybrid networking demonstration.
+* Microsoft Azure
+* Windows Server 2022
+* Active Directory Domain Services
+* DNS
+* PowerShell
+* Azure Point-to-Site VPN
+* IKEv2
+* Active Directory Replication
+* Windows
+* Ubuntu Linux
+* Azure Virtual Network
+* Network Security Groups
+* Kamatera
 
 ---
 
