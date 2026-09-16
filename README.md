@@ -34,7 +34,7 @@ The environment consists of a primary domain controller hosted in Microsoft Azur
 
 ### Architecture
 
-![Hybrid Active Directory Architecture](./assets/architecture.png)
+![Hybrid Active Directory Architecture](./assets/azure/architecture.png)
 
 The environment uses Azure Point-to-Site VPN connectivity to connect the external DC03 server to the Azure network.
 
@@ -66,7 +66,7 @@ A separate Windows Server 2022 system was deployed in Kamatera and added to the 
 
 DC03 was promoted to a writable domain controller and Global Catalog, providing a second domain controller outside the Azure environment.
 
-![DC03 Domain Controller](./assets/DC03/dc03-domain-controller.png)
+![DC03 Domain Controller](./assets/dc03/dc03.png)
 
 ### Azure Point-to-Site VPN
 
@@ -80,7 +80,7 @@ The VPN allowed DC03 to communicate with the Azure domain controller at:
 
 `10.10.10.4`
 
-![Azure P2S VPN Session](./assets/VPN/p2s-connected.png)
+![Azure P2S VPN Session](./assets/azure/azure_vpn.png)
 
 ### Active Directory Replication
 
@@ -94,7 +94,7 @@ DC02                0 / 5
 DC03                0 / 5
 ```
 
-![AD Replication Status](./assets/DC03/dc03-replication.png)
+![AD Replication Status](./assets/dc03/dc03_rs.png)
 
 ### Domain Controller Health
 
@@ -108,7 +108,7 @@ DC03 passed test DNS
 ad.hybridlab.test passed test DNS
 ```
 
-![DC03 Health Checks](./assets/DC03/dc03-health.png)
+![DC03 Health Checks](./assets/dc03/dc03_dctest.png)
 
 ---
 
@@ -121,12 +121,12 @@ Both clients were tested for domain-controller discovery to verify that DC02 and
 ### Windows Client
 
 ```powershell
-nltest /dsgetdc:ad.hybridlab.test /force
+nltest /dsgetdc:ad.hybridlab.test
 ```
 
 The client was able to discover available domain controllers in the domain.
 
-![Windows Domain Controller Discovery](./assets/Windows-Client/dc-discovery.png)
+![Windows Domain Controller Discovery](./assets/win01/win01_ntest.png)
 
 ### Linux Client
 
@@ -138,7 +138,7 @@ nslookup -type=SRV _ldap._tcp.ad.hybridlab.test
 
 The returned records included both DC02 and DC03.
 
-![Linux Domain Controller Discovery]()
+![Linux Domain Controller Discovery](./assets/lnx01/lnx-01.png)
 
 ---
 
