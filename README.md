@@ -138,7 +138,7 @@ nslookup -type=SRV _ldap._tcp.ad.hybridlab.test
 
 The returned records included both DC02 and DC03.
 
-![Linux Domain Controller Discovery](./assets/Linux-Client/dc-discovery.png)
+![Linux Domain Controller Discovery]()
 
 ---
 
@@ -183,6 +183,17 @@ The final environment successfully demonstrated:
 * Azure Virtual Network
 * Network Security Groups
 * Kamatera
+
+---
+
+### Final Results
+
+- Azure-hosted domain controller configured successfully
+- External domain controller integrated successfully
+- Windows client connected to the domain
+- Ubuntu client integrated with Active Directory
+- DNS resolution and authentication verified
+- Hybrid connectivity between environments confirmed
 
 ---
 
