@@ -1,6 +1,6 @@
-# 🛠️ Infrastructure Automation & Security Engineering
+# 🛠️ IT Infrastructure Projects
 
-This repository houses my core systems and security engineering projects. I focus on developing modular, automated tools to streamline administrative workflows, user provisioning, and incident triage.
+Hands-on systems administration and infrastructure projects focused on Windows Server, Active Directory, Azure, Linux, networking, virtualization, troubleshooting, and automation.
 
 ## 📂 Project Directory
 
